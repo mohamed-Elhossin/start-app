@@ -1,0 +1,54 @@
+<div class="container mt-5 pt-5">
+  <div class="card">
+    <div class="card-body">
+      <div *ngIf="empty;then  ifDatafound ; else ifDataEmpty ">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #ifDataEmpty>
+  <div class="alert alert-danger">
+    <h6>No Data Found in this API </h6>
+  </div>
+</ng-template>
+
+<ng-template #ifDatafound>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of allData; let i = index">
+        <th>{{ i+1 }}</th>
+        <th> {{ data.id }}</th>
+        <th> {{ data.name }}</th>
+        <th>
+          <div class="dropdown">
+            <a type="button" style="font-size:25px " data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="text-info fa-solid fa-ellipsis"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li (click)="onDelete(data.id)"><a class="text-danger dropdown-item"><i
+                    class="fa-solid fa-trash-can"></i></a></li>
+              <li><a class="text-info dropdown-item" routerLink="/showStudent/{{data.id }}"><i
+                    class="fa-solid fa-eye"></i></a></li>
+              <li><a class="text-primary dropdown-item" routerLink="/editStudent/{{data.id }}"><i class="fa-solid fa-pen-to-square"></i></a></li>
+            </ul>
+          </div>
+        </th>
+
+      </tr>
+    </tbody>
+  </table>
+
+</ng-template>

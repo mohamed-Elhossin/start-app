@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,5 +12,6 @@ export class PortfolioComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }
